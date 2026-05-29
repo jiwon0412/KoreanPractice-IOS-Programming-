@@ -13,7 +13,7 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        title = "한국어 연습 🇰🇷"
+        title = "한국어 연습"
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -28,7 +28,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         let scenario = scenarios[indexPath.row]
-        cell.textLabel?.text = "\(scenario.emoji)  \(scenario.title)"
+        cell.imageView?.image = UIImage(named: scenario.id)
+        cell.textLabel?.text = "\(scenario.title)"
         cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
         cell.accessoryType = .disclosureIndicator
         return cell
