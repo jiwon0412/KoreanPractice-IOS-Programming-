@@ -57,7 +57,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="cYF-fL-Q8U" kind="show" id="7Zl-DJ-Vpa"/>
+                                            <segue destination="cYF-fL-Q8U" kind="show" identifier="GoToChat" id="7Zl-DJ-Vpa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
