@@ -147,18 +147,9 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     // 각 행에 표시할 셀 구성
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
         let message = messages[indexPath.row]
-        
-        // 메시지 텍스트 설정
-        cell.textLabel?.text = message.text
-        
-        // 긴 메시지도 줄바꿈되도록 여러 줄 허용
-        cell.textLabel?.numberOfLines = 0
-        
-        // 사용자 메시지는 오른쪽, AI 메시지는 왼쪽 정렬
-        cell.textLabel?.textAlignment = message.isUser ? .right : .left
-        
+        cell.configure(text: message.text, isUser: message.isUser)
         return cell
     }
 }
