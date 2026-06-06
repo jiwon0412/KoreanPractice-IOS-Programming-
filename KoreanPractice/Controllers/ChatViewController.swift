@@ -126,6 +126,11 @@ class ChatViewController: UIViewController {
                     self.messages.append((text: aiText, isUser: false))
                     self.tableView.reloadData()
                     self.scrollToBottom()
+                    
+                    // 연습 횟수 저장
+                    let key = self.scenario.id
+                    let current = UserDefaults.standard.integer(forKey: key)
+                    UserDefaults.standard.set(current + 1, forKey: key)
                 }
             }
         }.resume()

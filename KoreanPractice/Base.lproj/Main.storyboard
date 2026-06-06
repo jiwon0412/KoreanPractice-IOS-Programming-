@@ -138,17 +138,17 @@
             </objects>
             <point key="canvasLocation" x="-1028" y="94"/>
         </scene>
-        <!--Item-->
+        <!--나의 학습-->
         <scene sceneID="Zfb-P8-j6a">
             <objects>
-                <viewController id="SeU-LW-4kC" customClass="StatisticsViewController" sceneMemberID="viewController">
+                <viewController title="나의 학습" id="SeU-LW-4kC" customClass="StatisticsViewController" customModule="KoreanPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vAY-xD-hsE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="ki9-G4-U76"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Iq8-Vw-A21"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="chart.bar.fill" catalog="system" id="Iq8-Vw-A21"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W4-Qe-OXY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,7 +159,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YDy-1u-ryt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MWH-fc-Q5q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZJE-ge-U61"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="message.fill" catalog="system" id="ZJE-ge-U61"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iAE-Cp-CMC">
                         <rect key="frame" x="0.0" y="118" width="393" height="54"/>
@@ -175,6 +175,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
+        <image name="message.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
