@@ -132,6 +132,7 @@
                     <connections>
                         <segue destination="MWH-fc-Q5q" kind="relationship" relationship="viewControllers" id="udh-yU-AVa"/>
                         <segue destination="SeU-LW-4kC" kind="relationship" relationship="viewControllers" id="5Yh-5o-Skj"/>
+                        <segue destination="Nbt-yb-35r" kind="relationship" relationship="viewControllers" id="dpM-y9-x8B"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmX-6f-fk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -154,10 +155,25 @@
             </objects>
             <point key="canvasLocation" x="-1028" y="830"/>
         </scene>
+        <!--번역-->
+        <scene sceneID="hW8-tK-xfp">
+            <objects>
+                <viewController id="Nbt-yb-35r" customClass="WebViewController" customModule="KoreanPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ptg-Q1-2EJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UXh-mP-Aon"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="번역" image="globe" catalog="system" id="EC0-IC-mZZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Wj-51-0nV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="91" y="871"/>
+        </scene>
         <!--Item-->
         <scene sceneID="qlw-mD-Tw8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YDy-1u-ryt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MWH-fc-Q5q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" image="message.fill" catalog="system" id="ZJE-ge-U61"/>
                     <toolbarItems/>
@@ -170,12 +186,14 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6fK-eL-J6Y"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YDy-1u-ryt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="90.839694656488547" y="93.661971830985919"/>
         </scene>
     </scenes>
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
+        <image name="globe" catalog="system" width="128" height="123"/>
         <image name="message.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
