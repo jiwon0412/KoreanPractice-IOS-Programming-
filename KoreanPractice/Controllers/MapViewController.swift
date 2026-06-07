@@ -56,8 +56,18 @@ class MapViewController: UIViewController {
     func setupLocation() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        // 위치 권한 요청
         locationManager.requestWhenInUseAuthorization()
+        
+        // 시뮬레이터 위치 오류 대비: 3초 후에도 위치 없으면 한성대로 이동
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            guard let self = self else { return }
+            if self.mapView.annotations.isEmpty {
+                let hansung = CLLocationCoordinate2D(latitude: 37.5827, longitude: 127.0116)
+                let region = MKCoordinateRegion(center: hansung, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                self.mapView.setRegion(region, animated: true)
+                self.searchNearbyPlaces(center: hansung)
+            }
+        }
     }
     
     // MARK: - 현재 위치 기준으로 주변 장소 검색
@@ -116,20 +126,13 @@ extension MapViewController: CLLocationManagerDelegate {
         }
     }
     
-    // 위치 업데이트될 때
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        
-        // 첫 위치 받으면 지도 이동 후 검색
-        let coordinate = location.coordinate
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+    // 위치 실패 시 한성대로 기본 설정
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("위치 오류: \(error)")
+        let hansung = CLLocationCoordinate2D(latitude: 37.5827, longitude: 127.0116)
+        let region = MKCoordinateRegion(center: hansung, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
-        
-        // 위치 한 번만 받고 멈추기 (배터리 절약)
-        locationManager.stopUpdatingLocation()
-        
-        // 주변 장소 검색
-        searchNearbyPlaces(center: coordinate)
+        searchNearbyPlaces(center: hansung)
     }
 }
 
