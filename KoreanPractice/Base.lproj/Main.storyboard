@@ -11,7 +11,7 @@
         <!--Chat View Controller-->
         <scene sceneID="B1Y-CC-4Wt">
             <objects>
-                <viewController id="cYF-fL-Q8U" customClass="ChatViewController" customModule="KoreanPractice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVC" id="cYF-fL-Q8U" customClass="ChatViewController" customModule="KoreanPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9dg-XA-NSi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,6 +133,7 @@
                         <segue destination="MWH-fc-Q5q" kind="relationship" relationship="viewControllers" id="udh-yU-AVa"/>
                         <segue destination="SeU-LW-4kC" kind="relationship" relationship="viewControllers" id="5Yh-5o-Skj"/>
                         <segue destination="Nbt-yb-35r" kind="relationship" relationship="viewControllers" id="dpM-y9-x8B"/>
+                        <segue destination="pdw-am-o0p" kind="relationship" relationship="viewControllers" id="yPb-OS-w9v"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmX-6f-fk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,6 +172,22 @@
             </objects>
             <point key="canvasLocation" x="91" y="871"/>
         </scene>
+        <!--주변 장소-->
+        <scene sceneID="v9s-k5-AEL">
+            <objects>
+                <viewController id="pdw-am-o0p" customClass="MapViewController" customModule="KoreanPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wyU-om-B3A">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="TO0-Wa-tVO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="주변 장소" image="map.fill" catalog="system" id="sFA-4F-hvJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vk-iy-MAW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1137" y="870"/>
+        </scene>
         <!--Item-->
         <scene sceneID="qlw-mD-Tw8">
             <objects>
@@ -194,6 +211,7 @@
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
         <image name="globe" catalog="system" width="128" height="123"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="message.fill" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
