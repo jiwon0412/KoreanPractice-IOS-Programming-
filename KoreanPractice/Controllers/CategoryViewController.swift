@@ -23,6 +23,9 @@ class CategoryViewController: UIViewController {
         
         // 테이블뷰 배경 연한 회색
         tableView.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+        
+        // 오늘의 추천 표현 헤더 추가
+        tableView.tableHeaderView = makeExpressionHeader()
     }
     
     // CategoryViewController → ChatViewController 로 넘어갈 때 데이터 전달
@@ -127,5 +130,69 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         // sender에 scenario 전달 → prepare()에서 받아서 ChatViewController에 주입
         performSegue(withIdentifier: "GoToChat", sender: scenario)
         print("선택: \(scenario.title)")
+    }
+    
+    func makeExpressionHeader() -> UIView {
+        let dailyExpressions: [(korean: String, english: String, category: String)] = [
+            ("아이스 아메리카노 한 잔 주세요", "One iced Americano, please", "☕️ 카페"),
+            ("테이크아웃으로 해주세요", "To go, please", "☕️ 카페"),
+            ("진료 예약을 하고 싶어요", "I'd like to make an appointment", "🏥 병원"),
+            ("환승하려면 어디서 내려요?", "Where do I transfer?", "🚇 지하철"),
+            ("이 역에서 몇 정거장이에요?", "How many stops from this station?", "🚇 지하철"),
+            ("수강 신청은 어떻게 해요?", "How do I register for classes?", "🏫 학교"),
+            ("휴학 신청서는 어디서 받아요?", "Where can I get a leave of absence form?", "🏫 학교"),
+        ]
+        
+        let expression = dailyExpressions.randomElement()!
+        
+        // 카드 컨테이너
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 130))
+        
+        let card = UIView()
+        card.backgroundColor = UIColor.systemIndigo
+        card.layer.cornerRadius = 16
+        card.translatesAutoresizingMaskIntoConstraints = false
+        header.addSubview(card)
+        
+        let exTitleLabel = UILabel()
+        exTitleLabel.text = "오늘의 표현  \(expression.category)"
+        exTitleLabel.font = UIFont.systemFont(ofSize: 12)
+        exTitleLabel.textColor = UIColor.white.withAlphaComponent(0.8)
+        exTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let koreanLabel = UILabel()
+        koreanLabel.text = expression.korean
+        koreanLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        koreanLabel.textColor = .white
+        koreanLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let englishLabel = UILabel()
+        englishLabel.text = expression.english
+        englishLabel.font = UIFont.systemFont(ofSize: 13)
+        englishLabel.textColor = UIColor.white.withAlphaComponent(0.8)
+        englishLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        card.addSubview(exTitleLabel)
+        card.addSubview(koreanLabel)
+        card.addSubview(englishLabel)
+        
+        NSLayoutConstraint.activate([
+            card.topAnchor.constraint(equalTo: header.topAnchor, constant: 12),
+            card.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
+            card.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
+            card.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -12),
+            
+            exTitleLabel.topAnchor.constraint(equalTo: card.topAnchor, constant: 16),
+            exTitleLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 20),
+            
+            koreanLabel.topAnchor.constraint(equalTo: exTitleLabel.bottomAnchor, constant: 8),
+            koreanLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 20),
+            koreanLabel.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -20),
+            
+            englishLabel.topAnchor.constraint(equalTo: koreanLabel.bottomAnchor, constant: 6),
+            englishLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 20),
+        ])
+        
+        return header
     }
 }

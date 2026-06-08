@@ -24,7 +24,32 @@ class ChatViewController: UIViewController {
     var messages: [(text: String, isUser: Bool)] = []
     
     // Claude API에 보낼 대화 기록 (역할, 내용)
-        var conversationHistory: [[String: String]] = []
+    var conversationHistory: [[String: String]] = []
+    
+    // 힌트 표시 여부
+    var isHintVisible = false
+    
+    // 힌트 뷰 (말풍선 형태)
+    let hintView: UIView = {
+        let v = UIView()
+        v.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.15)
+        v.layer.cornerRadius = 12
+        v.layer.borderWidth = 1
+        v.layer.borderColor = UIColor.systemYellow.cgColor
+        v.isHidden = true
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    
+    // 힌트 텍스트 레이블
+    let hintLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .systemOrange
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +66,31 @@ class ChatViewController: UIViewController {
         let greeting = "안녕하세요! \(scenario.title) 상황을 연습해봐요 !!"
         messages.append((text: greeting, isUser: false))
         tableView.reloadData()
+        
+        // 힌트 뷰 세팅
+        setupHintView()
+    }
+    
+    @IBAction func hintButtonTapped(_ sender: UIButton) {
+        isHintVisible.toggle()
+        
+        if isHintVisible {
+            // 시나리오별 힌트 표현
+            let hints: [String: String] = [
+                "cafe": "💡 이런 표현 써봐요!\n• 아이스 아메리카노 한 잔 주세요\n• 따뜻한 라떼 주세요\n• 테이크아웃으로 해주세요",
+                "hospital": "💡 이런 표현 써봐요!\n• 배가 아파서 왔어요\n• 진료 예약을 하고 싶어요\n• 처방전 주세요",
+                "subway": "💡 이런 표현 써봐요!\n• 강남역 어떻게 가요?\n• 환승하려면 어디서 내려요?\n• 교통카드 어디서 사요?",
+                "school": "💡 이런 표현 써봐요!\n• 수강 신청은 어떻게 해요?\n• 휴학 신청서 주세요\n• 장학금 신청 기간이 언제예요?",
+            ]
+            hintLabel.text = hints[scenario.id] ?? "💡 자유롭게 대화해봐요!"
+            sender.setTitle("힌트 숨기기 ∧", for: .normal)
+        } else {
+            sender.setTitle("💡 힌트 보기 ∨", for: .normal)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.hintView.isHidden = !self.isHintVisible
+        }
     }
     
     // 전송 버튼 눌렀을 때 호출
@@ -142,6 +192,24 @@ class ChatViewController: UIViewController {
         let indexPath = IndexPath(row: lastRow, section: 0)
         tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
+    
+    func setupHintView() {
+        hintView.addSubview(hintLabel)
+        view.addSubview(hintView)
+        
+        NSLayoutConstraint.activate([
+            // 힌트뷰: 텍스트필드 바로 위
+            hintView.bottomAnchor.constraint(equalTo: messageTextField.topAnchor, constant: -8),
+            hintView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            hintView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            
+            hintLabel.topAnchor.constraint(equalTo: hintView.topAnchor, constant: 12),
+            hintLabel.bottomAnchor.constraint(equalTo: hintView.bottomAnchor, constant: -12),
+            hintLabel.leadingAnchor.constraint(equalTo: hintView.leadingAnchor, constant: 12),
+            hintLabel.trailingAnchor.constraint(equalTo: hintView.trailingAnchor, constant: -12),
+        ])
+    }
+    
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
