@@ -1,6 +1,6 @@
 ## 🎬 시연 영상
-[![YouTube](https://img.shields.io/badge/YouTube-시연영상-red)](https://youtu.be/ONyLMDPGe1A)
-
+[[![YouTube](https://img.shields.io/badge/YouTube-시연영상-red)](https://youtu.be/ONyLMDPGe1A)
+](https://youtu.be/adwQs2zTEKA)
 ---
 
 # 🇰🇷 하루 한국어 (한국어 회화 연습 앱)
