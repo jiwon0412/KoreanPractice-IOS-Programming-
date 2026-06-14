@@ -146,6 +146,7 @@
                         <segue destination="SeU-LW-4kC" kind="relationship" relationship="viewControllers" id="5Yh-5o-Skj"/>
                         <segue destination="Nbt-yb-35r" kind="relationship" relationship="viewControllers" id="dpM-y9-x8B"/>
                         <segue destination="pdw-am-o0p" kind="relationship" relationship="viewControllers" id="yPb-OS-w9v"/>
+                        <segue destination="1v3-4k-D6c" kind="relationship" relationship="viewControllers" id="XE2-FQ-FKd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmX-6f-fk9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -200,6 +201,22 @@
             </objects>
             <point key="canvasLocation" x="1137" y="870"/>
         </scene>
+        <!--프로필-->
+        <scene sceneID="LeZ-Ve-zXi">
+            <objects>
+                <viewController id="1v3-4k-D6c" customClass="ProfileViewController" customModule="KoreanPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nHi-xQ-vcF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="e7r-Lg-nrq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="프로필" image="person.fill" catalog="system" id="RaF-dF-iPL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IWg-2g-qZ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2120" y="896"/>
+        </scene>
         <!--Item-->
         <scene sceneID="qlw-mD-Tw8">
             <objects>
@@ -225,6 +242,7 @@
         <image name="globe" catalog="system" width="128" height="123"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="message.fill" catalog="system" width="128" height="104"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

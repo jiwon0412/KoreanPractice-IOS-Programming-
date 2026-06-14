@@ -63,9 +63,11 @@ class ChatViewController: UIViewController {
         tableView.estimatedRowHeight = 60
         
         // AI 첫 메시지
-        let greeting = "안녕하세요! \(scenario.title) 상황을 연습해봐요 !!"
+        let name = UserDefaults.standard.string(forKey: "userName") ?? ""
+        let greeting = name.isEmpty
+            ? "안녕하세요! \(scenario.title) 상황을 연습해봐요 😊"
+            : "\(name)님, 안녕하세요! \(scenario.title) 상황을 연습해봐요 😊"
         messages.append((text: greeting, isUser: false))
-        tableView.reloadData()
         
         // 힌트 뷰 세팅
         setupHintView()
